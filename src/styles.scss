@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+/*------ */
+/* RESET */
+/*------ */
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+a {
+  cursor: pointer;
+}
