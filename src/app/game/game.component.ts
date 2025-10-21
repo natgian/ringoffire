@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/models/game';
+import { MatDialog } from '@angular/material/dialog';
+import { AddPlayerDialogComponent } from '../add-player-dialog/add-player-dialog.component';
 
 
 @Component({
@@ -12,7 +14,7 @@ export class GameComponent implements OnInit {
   currentCard: string = "";
   game!: Game;
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.newGame();
@@ -39,6 +41,16 @@ export class GameComponent implements OnInit {
         this.game.playedCards.push(this.currentCard);
       }, 1000);
     }
+  }
+
+   openDialog(): void {
+    const dialogRef = this.dialog.open(AddPlayerDialogComponent);
+
+    dialogRef.afterClosed().subscribe((name:string) => {
+      if(name) {
+        this.game.players.push(name);
+      }
+    });
   }
 }
 
