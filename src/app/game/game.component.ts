@@ -22,7 +22,6 @@ export class GameComponent implements OnInit {
 
   newGame() {
     this.game = new Game();
-    console.log(this.game);
   }
 
   pickCard() {
@@ -30,10 +29,6 @@ export class GameComponent implements OnInit {
 
     if(!this.pickCardAnimation) {
       this.currentCard = this.game.stack.pop() || '';
-
-      console.log("New card:", this.currentCard);
-      console.log(this.game);
-  
       this.pickCardAnimation = true;
 
       setTimeout(() => {
