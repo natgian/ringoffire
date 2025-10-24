@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./startscreen.component.scss']
 })
 export class StartscreenComponent {
+  imagePath = "assets/img/startscreen.jpg"
+
   constructor(private router: Router){}
 
   newGame() {

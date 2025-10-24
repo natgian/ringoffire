@@ -10,8 +10,9 @@ import { AddPlayerDialogComponent } from '../add-player-dialog/add-player-dialog
   styleUrls: ['./game.component.scss'],
 })
 export class GameComponent implements OnInit {
+  imagePath = 'assets/img/board.jpg';
   pickCardAnimation = false;
-  currentCard: string = "";
+  currentCard: string = '';
   game!: Game;
 
   constructor(public dialog: MatDialog) {}
@@ -25,9 +26,10 @@ export class GameComponent implements OnInit {
   }
 
   pickCard() {
-    if (this.game.stack.length === 0) return; 
+    if (this.game.stack.length === 0) return;
+    if(this.game.players.length === 0) return;
 
-    if(!this.pickCardAnimation) {
+    if (!this.pickCardAnimation) {
       this.currentCard = this.game.stack.pop() || '';
       this.pickCardAnimation = true;
 
@@ -40,14 +42,15 @@ export class GameComponent implements OnInit {
   }
 
   changeCurrentPlayer() {
-    this.game.currentPlayer = (this.game.currentPlayer + 1) % this.game.players.length;  
+    this.game.currentPlayer =
+      (this.game.currentPlayer + 1) % this.game.players.length;
   }
 
-   openDialog(): void {
+  openDialog(): void {
     const dialogRef = this.dialog.open(AddPlayerDialogComponent);
 
-    dialogRef.afterClosed().subscribe((name:string) => {
-      if(name.trim() && name.length > 0) {
+    dialogRef.afterClosed().subscribe((name: string) => {
+      if (name.trim() && name.length > 0) {
         this.game.players.push(name);
       }
     });
