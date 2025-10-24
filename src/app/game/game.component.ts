@@ -25,7 +25,7 @@ export class GameComponent implements OnInit {
   }
 
   pickCard() {
-    if (this.game.stack.length === 0) return;
+    if (this.game.stack.length === 0) return; 
 
     if(!this.pickCardAnimation) {
       this.currentCard = this.game.stack.pop() || '';
@@ -34,8 +34,13 @@ export class GameComponent implements OnInit {
       setTimeout(() => {
         this.pickCardAnimation = false;
         this.game.playedCards.push(this.currentCard);
+        this.changeCurrentPlayer();
       }, 1000);
     }
+  }
+
+  changeCurrentPlayer() {
+    this.game.currentPlayer = (this.game.currentPlayer + 1) % this.game.players.length;  
   }
 
    openDialog(): void {
