@@ -10,7 +10,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StartscreenComponent } from './startscreen/startscreen.component';
@@ -19,6 +18,10 @@ import { PlayerComponent } from './player/player.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddPlayerDialogComponent } from './add-player-dialog/add-player-dialog.component';
 import { GameInfoComponent } from './game-info/game-info.component';
+
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,8 @@ import { GameInfoComponent } from './game-info/game-info.component';
     GameInfoComponent,
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
