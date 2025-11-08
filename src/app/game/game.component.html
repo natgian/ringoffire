@@ -18,18 +18,20 @@
   <div class="card-stack">
     <!-- Unplayed cards stack -->
     <img
-      *ngFor="let card of [0, 1, 2, 3]; let i = index"
+      *ngFor="let card of game.stack.slice(0, displayedCards); let i = index"
       [ngStyle]="{ 'right.px': i * 5 }"
       src="assets/img/cards/card_cover.png"
     />
 
     <!-- Top card -->
-    <img
-      (click)="pickCard()"
-      class="top-card"
-      [ngStyle]="{ 'right.px': 25 }"
-      src="assets/img/cards/card_cover.png"
-    />
+    <ng-container *ngIf="game.stack.length > 0">
+      <img
+        (click)="pickCard()"
+        class="top-card"
+        [ngStyle]="{ 'right.px': 25 }"
+        src="assets/img/cards/card_cover.png"
+      />
+    </ng-container>
 
     <!-- Played cards stack -->
     <img
@@ -46,8 +48,14 @@
       [ngStyle]="{ 'right.px': 25 }"
       src="assets/img/cards/{{ game.currentCard }}.png"
     />
+
+    <!-- New Game button -->
+    <button (click)="newGame()" class="start-btn">Start New Game</button>
   </div>
 </div>
+
+<!-- New Game button -->
+<button (click)="newGame()" class="start-btn">Start New Game</button>
 
 <app-game-info [card]="game.currentCard" class="info-card"></app-game-info>
 

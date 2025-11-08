@@ -88,4 +88,8 @@ export class GameComponent implements OnInit {
       .doc(this.gameId)
       .update(this.game.toJSON());
   }
+
+  get displayedCards(): number {
+    return Math.min(this.game.stack.length - 1, 4);
+  }
 }
