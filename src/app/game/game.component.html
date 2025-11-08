@@ -48,14 +48,18 @@
       [ngStyle]="{ 'right.px': 25 }"
       src="assets/img/cards/{{ game.currentCard }}.png"
     />
-
-    <!-- New Game button -->
-    <button (click)="newGame()" class="start-btn">Start New Game</button>
   </div>
 </div>
 
 <!-- New Game button -->
-<button (click)="newGame()" class="start-btn">Start New Game</button>
+<button
+  *ngIf="game.stack.length === 0 && !game.pickCardAnimation"
+  (click)="newGame()"
+  id="new-game-btn"
+  class="start-btn"
+>
+  Start New Game
+</button>
 
 <app-game-info [card]="game.currentCard" class="info-card"></app-game-info>
 

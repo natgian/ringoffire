@@ -46,6 +46,14 @@
   bottom: 32px;
 }
 
+#new-game-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+}
+
 .info-card {
   position: absolute;
   left: 32px;
@@ -60,7 +68,7 @@
   left: 0;
   right: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   gap: 12px;
   overflow-y: auto;
   z-index: 1;
@@ -83,11 +91,10 @@
 
 @media (max-width: 800px) {
   .info-card {
+    width: 100%;
     position: absolute;
     left: 0;
     bottom: 0;
-    max-height: 100px;
-    width: 100%;
   }
 
   .add-btn {

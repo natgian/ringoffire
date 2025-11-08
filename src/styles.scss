@@ -30,6 +30,17 @@ body {
   overflow-x: hidden;
 }
 
+.start-btn {
+  padding: 24px;
+  font-size: 20px;
+  border-radius: 10px;
+  background-color: white;
+  border: 2px solid black;
+  &:hover {
+    background-color: yellow;
+  }
+}
+
 @media (min-width: 800px) {
   .hide-desktop {
     display: none !important;
