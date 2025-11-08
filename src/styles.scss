@@ -19,5 +19,25 @@ a {
   cursor: pointer;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow-x: hidden;
+}
+
+@media (min-width: 800px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
+@media (max-width: 800px) {
+  .hide-mobile {
+    display: none;
+  }
+}

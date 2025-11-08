@@ -22,6 +22,7 @@ import { GameInfoComponent } from './game-info/game-info.component';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { PlayerMobileComponent } from './player-mobile/player-mobile.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     PlayerComponent,
     AddPlayerDialogComponent,
     GameInfoComponent,
+    PlayerMobileComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

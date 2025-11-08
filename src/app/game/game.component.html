@@ -1,10 +1,18 @@
 <app-player
   *ngFor="let player of game.players; let i = index"
-  class="player-position"
-  [ngStyle]="{ 'top.px': 100 + i * 100 }"
+  class="player-position hide-mobile"
+  [ngStyle]="{ 'top.px': 60 + i * 100 }"
   [name]="player"
   [playerActive]="i === game.currentPlayer"
 ></app-player>
+
+<div class="scroll-container hide-desktop">
+  <app-player-mobile
+    *ngFor="let player of game.players; let i = index"
+    [name]="player"
+    [playerActive]="i === game.currentPlayer"
+  ></app-player-mobile>
+</div>
 
 <div class="field" [style.background-image]="'url(' + imagePath + ')'">
   <div class="card-stack">
@@ -35,7 +43,7 @@
       (click)="pickCard()"
       *ngIf="game.pickCardAnimation"
       class="pick-card"
-      [ngStyle]="{ 'right.px': 5 * 5 }"
+      [ngStyle]="{ 'right.px': 25 }"
       src="assets/img/cards/{{ game.currentCard }}.png"
     />
   </div>
