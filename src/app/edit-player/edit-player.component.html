@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Edit player</h2>
+<button mat-icon-button (click)="onNoClick()" id="close-btn">X</button>
+
+<mat-dialog-content>
+  <p>Change name:</p>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="name" maxlength="20" cdkFocusInitial />
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button color="warn" (click)="deletePlayer()">
+    Delete Player
+  </button>
+  <button
+    mat-flat-button
+    color="accent"
+    [disabled]="name.length === 0"
+    [mat-dialog-close]="name"
+  >
+    Save
+  </button>
+</mat-dialog-actions>

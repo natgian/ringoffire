@@ -74,6 +74,15 @@
   z-index: 1;
 }
 
+app-player,
+app-player-mobile {
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(1.15);
+  }
+}
+
 @keyframes pick-card-animation {
   0% {
     transform: scale(1) translateX(0) translateY(0) rotate(0deg);

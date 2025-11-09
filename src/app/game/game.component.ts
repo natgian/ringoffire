@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { Game } from 'src/models/game';
 import { AddPlayerDialogComponent } from '../add-player-dialog/add-player-dialog.component';
+import { EditPlayerComponent } from '../edit-player/edit-player.component';
 
 @Component({
   selector: 'app-game',
@@ -74,9 +75,29 @@ export class GameComponent implements OnInit {
     const dialogRef = this.dialog.open(AddPlayerDialogComponent);
 
     dialogRef.afterClosed().subscribe((name: string) => {
-      if (name.trim() && name.length > 0) {
+      if (name && name.trim().length > 0) {
         this.game.players.push(name);
-        console.log(this.game.players);
+        this.saveGame();
+      }
+    });
+  }
+
+  editPlayer(playerId: number) {
+    const playerName = this.game.players[playerId];
+    const dialogRef = this.dialog.open(EditPlayerComponent, {
+      data: { name: playerName, id: playerId },
+    });
+
+    dialogRef.afterClosed().subscribe((dialogResponse) => {
+      if (!dialogResponse) return;
+
+      if (typeof dialogResponse === 'string') {
+        if (dialogResponse && dialogResponse.trim().length > 0) {
+          this.game.players[playerId] = dialogResponse;
+          this.saveGame();
+        }
+      } else if (dialogResponse.action === 'delete') {
+        this.game.players.splice(playerId, 1);
         this.saveGame();
       }
     });
